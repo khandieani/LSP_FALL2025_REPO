@@ -1,9 +1,9 @@
 package org.howard.edu.lsp.midterm.question4;
 
-public class DoorLock extends Device implements Networked, BatteryPowered {
+public class Doorlock extends Device implements Networked, BatteryPowered {
   private int batteryPercent;
 
-  public DoorLock(String id, String location, int initialBattery) {
+  public Doorlock(String id, String location, int initialBattery) {
     super(id, location);
     if (initialBattery < 0 || initialBattery > 100) {
       throw new IllegalArgumentException("battery 0..100");
