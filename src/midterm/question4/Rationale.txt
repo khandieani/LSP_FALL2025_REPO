@@ -1,0 +1,31 @@
+Implementation Rationale for Question 4
+
+1. Design Decisions:
+   - Created Device interface with two methods:
+     * getDeviceType(): Returns the type of device
+     * getStatus(): Returns the current status of the device
+
+   - Implemented Networked class that implements Device interface:
+     * Maintains device type and connection status
+     * Provides methods to connect/disconnect and check connection status
+     * Returns appropriate status strings ("online"/"offline")
+
+2. Implementation Details:
+   - Used boolean isOnline to track connection status
+   - Initialized devices as offline by default
+   - Implemented getStatus() to return human-readable status strings
+   - Added proper JavaDoc documentation for all methods
+   - Maintained the original Networked interface methods (connect, disconnect, isConnected)
+
+3. Benefits of this Design:
+   - Clear separation of concerns between interface and implementation
+   - Simple and intuitive API for device management
+   - Extensible design allowing for different types of devices
+   - Consistent status reporting across all device types
+   - Well-documented code for maintainability
+
+4. Future Considerations:
+   - Could be extended to support different network protocols
+   - Could add error handling for network operations
+   - Could add support for device-specific features
+   - Could implement additional device states beyond online/offline
