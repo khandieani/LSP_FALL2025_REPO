@@ -4,45 +4,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Service for generating passwords using selectable algorithms.
- * 
- * DESIGN PATTERN DOCUMENTATION:
- * =============================
- * 
- * PATTERNS USED:
- * 1. SINGLETON PATTERN
- *    - Ensures only one instance of PasswordGeneratorService exists
- *    - Provides global access point via getInstance()
- *    - Uses private constructor and static instance
- * 
- * 2. STRATEGY PATTERN
- *    - Encapsulates password generation algorithms in separate classes
- *    - Allows algorithm selection at runtime via setAlgorithm()
- *    - Enables swapping algorithms without changing client code
- *    - Each algorithm implements the PasswordAlgorithm interface
- * 
- * WHY THESE PATTERNS:
- * 
- * The Singleton pattern is appropriate because:
- * - System architects require "a single shared access point"
- * - Only one instance of the service should exist across the application
- * - Prevents multiple instances with inconsistent state
- * - Ensures resource efficiency (single Random/SecureRandom instance per algorithm)
- * 
- * The Strategy pattern is appropriate because:
- * - Multiple password generation approaches must be supported
- * - Algorithm selection must be changeable at runtime
- * - Future expansion of algorithms must not require modification to client code
- * - Password generation behavior must be swappable
- * - Clean separation of concerns: each algorithm is independent
- * 
- * Together, these patterns satisfy all architect requirements:
- * 1. ✓ Support multiple approaches: Strategy pattern with three implementations
- * 2. ✓ Runtime selection: setAlgorithm() allows dynamic selection
- * 3. ✓ Future expansion: Add new PasswordAlgorithm implementations without client changes
- * 4. ✓ Swappable behavior: Strategy pattern enables behavior substitution
- * 5. ✓ Single access point: Singleton provides getInstance()
- */
+  Service responsible for generating passwords using different selectable algorithms.
+
+  DESIGN PATTERN NOTES
+
+  Patterns Used:
+
+  1. Singleton
+     The application only needs one shared password generator.
+     getInstance provides the single access point.
+     The constructor is private so no other instances can be created.
+
+  2. Strategy
+     Each password-generation approach is its own class.
+     setAlgorithm allows switching between algorithms at runtime.
+     All algorithms follow the same PasswordAlgorithm interface, making them easy to swap or extend.
+
+  Why These Patterns Work:
+
+  Singleton fits because the requirements call for one shared access point, and keeping a single instance avoids inconsistent state.
+
+  Strategy fits because multiple password-generation approaches are required, the caller must be able to change algorithms while the program is running, and new algorithms can be added later without changing client code. It also keeps each algorithm separate and easy to maintain.
+
+  Together, these patterns meet all system expectations:
+  They support multiple approaches, allow runtime selection, make future extensions simple, allow password behavior to be swapped, and provide a single shared access point.
+*/
 public class PasswordGeneratorService {
 
     private static PasswordGeneratorService instance;
